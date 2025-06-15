@@ -1,0 +1,71 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Data directories
+data/
+data/archive/
+data/processed/
+data/models/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# Model checkpoints and logs
+*.pth
+*.pt
+*.ckpt
+logs/
+runs/
+tensorboard/
+
+# Environment variables
+.env
+.env.local
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+evaluation_results/
+*.log
+*.csv
+*.json
+!config.json 
