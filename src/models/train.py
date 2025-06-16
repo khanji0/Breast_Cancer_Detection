@@ -1,3 +1,6 @@
+# File: src/models/train.py
+# Description: Training script for breast cancer detection model
+
 import os
 import torch
 import torch.nn as nn

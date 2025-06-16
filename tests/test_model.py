@@ -1,3 +1,6 @@
+# File: tests/test_model.py
+# Description: Unit tests for breast cancer detection model
+
 import os
 import sys
 import unittest

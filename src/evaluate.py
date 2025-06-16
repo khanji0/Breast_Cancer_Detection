@@ -1,3 +1,6 @@
+# File: src/evaluate.py
+# Description: Model evaluation script for breast cancer detection
+
 import os
 import torch
 import json

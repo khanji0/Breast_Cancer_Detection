@@ -1,3 +1,6 @@
+# File: src/config.py
+# Description: Configuration settings for breast cancer detection project
+
 import os
 
 # Data paths

@@ -1,7 +1,11 @@
+# File: src/models/model.py
+# Description: Model architecture and training utilities for breast cancer detection
+
 import torch
 import torch.nn as nn
 import torchvision.models as models
 from torch.nn import functional as F
+from torchvision.models import ResNet50_Weights, DenseNet121_Weights, EfficientNet_B0_Weights
 
 class BreastCancerClassifier(nn.Module):
     def __init__(self, model_name='resnet50', pretrained=True, num_classes=2):
@@ -9,13 +13,13 @@ class BreastCancerClassifier(nn.Module):
         
         # Load pretrained model
         if model_name == 'resnet50':
-            self.model = models.resnet50(pretrained=pretrained)
+            self.model = models.resnet50(weights=ResNet50_Weights.IMAGENET1K_V1 if pretrained else None)
             in_features = self.model.fc.in_features
         elif model_name == 'densenet121':
-            self.model = models.densenet121(pretrained=pretrained)
+            self.model = models.densenet121(weights=DenseNet121_Weights.IMAGENET1K_V1 if pretrained else None)
             in_features = self.model.classifier.in_features
         elif model_name == 'efficientnet_b0':
-            self.model = models.efficientnet_b0(pretrained=pretrained)
+            self.model = models.efficientnet_b0(weights=EfficientNet_B0_Weights.IMAGENET1K_V1 if pretrained else None)
             in_features = self.model.classifier[1].in_features
         else:
             raise ValueError(f"Unsupported model: {model_name}")

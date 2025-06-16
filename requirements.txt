@@ -1,22 +1,12 @@
-# Deep Learning
-torch>=1.9.0
-torchvision>=0.10.0
-tensorboard>=2.7.0
-
-# Data Processing
-numpy>=1.19.2
-pandas>=1.2.4
-scikit-learn>=0.24.2
-pillow>=8.2.0  # Using PIL for image processing instead of OpenCV
-albumentations>=1.0.3
-
-# Visualization
-matplotlib>=3.4.3
-seaborn>=0.11.2
-
-# Jupyter
-jupyter>=1.0.0
-notebook>=6.4.0
-
-# Utilities
-tqdm>=4.62.3 
+torch
+torchvision
+numpy
+pandas
+matplotlib
+scikit-learn
+tqdm
+opencv-python
+seaborn
+jupyter
+notebook
+ipykernel

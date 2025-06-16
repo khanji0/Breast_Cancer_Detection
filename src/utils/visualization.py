@@ -1,3 +1,6 @@
+# File: src/utils/visualization.py
+# Description: Visualization utilities for model evaluation and results analysis
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
