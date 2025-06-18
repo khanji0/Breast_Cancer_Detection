@@ -39,7 +39,13 @@ class Trainer:
         # Initialize loss function and optimizer
         self.criterion = nn.CrossEntropyLoss(weight=get_class_weights(config['data_dir']).to(self.device))
         self.optimizer = optim.Adam(self.model.parameters(), lr=config['learning_rate'])
-        self.scheduler = ReduceLROnPlateau(self.optimizer, mode='max', factor=0.1, patience=3, verbose=True)
+        self.scheduler = ReduceLROnPlateau(
+            self.optimizer,
+            mode='max',
+            factor=0.1,
+            patience=3,
+            min_lr=1e-6
+        )
         
         # Initialize metrics
         self.best_val_auc = 0
@@ -210,12 +216,12 @@ class Trainer:
 if __name__ == "__main__":
     # Training configuration
     config = {
-        'model_name': 'resnet50',
+        'model_name': 'efficientnet_b0',
         'data_dir': 'data/processed',
-        'batch_size': 32,
-        'num_workers': 4,
+        'batch_size': 8,
+        'num_workers': 2,
         'learning_rate': 1e-4,
-        'num_epochs': 50
+        'num_epochs': 20
     }
     
     # Initialize and train

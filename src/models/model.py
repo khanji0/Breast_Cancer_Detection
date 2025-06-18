@@ -8,7 +8,7 @@ from torch.nn import functional as F
 from torchvision.models import ResNet50_Weights, DenseNet121_Weights, EfficientNet_B0_Weights
 
 class BreastCancerClassifier(nn.Module):
-    def __init__(self, model_name='resnet50', pretrained=True, num_classes=2):
+    def __init__(self, model_name='efficientnet_b0', pretrained=True, num_classes=2):
         super(BreastCancerClassifier, self).__init__()
         
         # Load pretrained model
@@ -24,28 +24,27 @@ class BreastCancerClassifier(nn.Module):
         else:
             raise ValueError(f"Unsupported model: {model_name}")
         
-        # Replace the final layer
+        # Simplified classifier head
         if model_name == 'resnet50':
             self.model.fc = nn.Sequential(
-                nn.Linear(in_features, 512),
+                nn.Linear(in_features, 256),
                 nn.ReLU(),
-                nn.Dropout(0.3),
-                nn.Linear(512, num_classes)
+                nn.Dropout(0.2),
+                nn.Linear(256, num_classes)
             )
         elif model_name == 'densenet121':
             self.model.classifier = nn.Sequential(
-                nn.Linear(in_features, 512),
+                nn.Linear(in_features, 256),
                 nn.ReLU(),
-                nn.Dropout(0.3),
-                nn.Linear(512, num_classes)
+                nn.Dropout(0.2),
+                nn.Linear(256, num_classes)
             )
         elif model_name == 'efficientnet_b0':
             self.model.classifier = nn.Sequential(
-                nn.Dropout(p=0.3),
-                nn.Linear(in_features, 512),
+                nn.Dropout(p=0.2),
+                nn.Linear(in_features, 256),
                 nn.ReLU(),
-                nn.Dropout(0.3),
-                nn.Linear(512, num_classes)
+                nn.Linear(256, num_classes)
             )
     
     def forward(self, x):
